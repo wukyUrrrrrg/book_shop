@@ -1,0 +1,15 @@
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <% for book_binding in @book_bindings %>
+    <tr>
+      <td><%=h book_binding.name %></td>
+      <td><%= link_to "Показать", [:admin, book_binding] %></td>
+      <td><%= link_to "Редактировать", edit_admin_book_binding_path(book_binding) %></td>
+      <td><%= link_to "Удалить", [:admin, book_binding], :confirm => 'Вы уверены?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Новый", new_admin_book_binding_path %></p>

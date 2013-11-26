@@ -1,0 +1,56 @@
+<% render :partial => 'admin/shared/product_sub_menu' %>
+<h1><%= "#{t("actions.listing")} #{t("authors")}" %></h1>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_ot_link">
+      <%= button_link_to t("new_author"), new_object_url, :icon => 'add' %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<table class="index">
+  <tr>
+    <th><%= sort_link @search, :last_name, t("last_name") %></th>
+    <th><%= sort_link @search, :first_name, t("first_name") %></th>
+    <th><%= sort_link @search, :second_name, t("second_name") %></th>
+    <th>
+    </th>
+  </tr>
+  <% @collection.each do |author| %>
+    <tr id="<%= dom_id author %>">
+      <%- locals = {:author => author} -%>
+      <td><%= author.last_name %></td>
+      <td><%= author.first_name %></td>
+      <td><%= author.second_name %></td>
+      <td class="actions">
+        <%= link_to_edit author   %>
+        &nbsp;
+        <%= link_to_delete author   %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate(:previous_label => "&#171; #{t('previous')}", :next_label => "#{t('next')} &#187;") %>
+
+<% content_for :sidebar do %>
+
+  <% form_for  [:admin, @search] do |f| %>
+    <div class="box">
+      <h3><%= t(:search) %></h3>
+
+      <%- locals = {:f => f} -%>
+      <p>
+        <label><%= t("last_name") %></label><br />
+        <%= f.text_field :last_name_contains, :size => 15 %>
+      </p>
+
+      <p class="form-buttons">
+        <%= button t("search") %>
+      </p>
+    </div>
+  <% end %>
+
+<% end %>
+

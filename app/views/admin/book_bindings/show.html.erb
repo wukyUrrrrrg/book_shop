@@ -1,0 +1,10 @@
+<p>
+  <strong><%= t('activerecord.attributes.book_binding.name')%>:</strong>
+  <%=h @book_binding.name %>
+</p>
+
+<p>
+  <%= link_to "Редактировать", edit_admin_book_binding_path(@book_binding) %> |
+  <%= link_to "Удалить", [:admin, @book_binding], :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "Весь список", admin_book_bindings_path %>
+</p>

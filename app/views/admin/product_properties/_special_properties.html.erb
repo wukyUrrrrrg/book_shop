@@ -1,0 +1,18 @@
+<% for special_property in ['author', 'press', 'product_series', 'book_binding'] -%>
+  <p>
+	<%= label_tag special_property, t("activerecord.models.#{special_property}") %>
+	<br />
+	<%= select_tag special_property,
+	    "<option></option>" +
+	      options_from_collection_for_select(special_property.camelize.constantize.by_name,
+						 :id,
+						 :full_name,
+						 (product.send(special_property).id if product.send(special_property))),
+	    { :name => "product[#{special_property}_id]"} %>
+	
+	<%= link_to icon('add') + ' ' + t("new_#{special_property}"),
+	    eval("new_admin_#{special_property}_path"), {:target => '_blank'} %>
+    </tr>
+  </p>
+<% end -%>
+

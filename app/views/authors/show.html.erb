@@ -1,0 +1,19 @@
+<h1><%=h @author.full_name %></h1>
+
+<p>
+  <%= @author.description.blank? ? content_tag('strong', t('activerecord.attributes.author.description')) + ':' + t('gui.no_info') : @author.description.html_safe %>
+</p>
+
+<p><strong><%= t('activerecord.attributes.author.website_url') %>:</strong>
+  <%= @author.website_url.blank? ? t('gui.no_info') : link_to(@author.website_url, @author.website_url) %>
+</p>
+
+<%= link_to 'Назад', :back -%>
+<br />
+
+<p><strong>Вы можете скачать безплатно или купить следующие труды автора '<%= @author.name_with_initials %>':</strong></p>
+<%= render :partial => "shared/products.html.erb", :locals => {:products => @author.products.active, :taxon => nil } %>
+
+<% content_for :sidebar do %>
+  <%= render "shared/taxonomies" %>
+<% end %>

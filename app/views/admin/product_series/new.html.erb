@@ -1,0 +1,7 @@
+<%= render :partial => 'admin/shared/product_sub_menu' %>
+
+<% form_for(:product_series, :url => admin_product_series_index_url) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  <%= submit_tag t("update") %> <%= t("or") %> <%= link_to t("cancel"), admin_product_series_index_url %>
+<% end %>
+

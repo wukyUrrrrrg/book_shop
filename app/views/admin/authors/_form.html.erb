@@ -1,0 +1,45 @@
+<% f.field_container :last_name do %>
+  <%= f.label :last_name, t("last_name") %> <span class="required">*</span><br />
+  <%= f.text_field :last_name, :class => 'fullwidth title'  %>
+  <%= f.error_message_on :last_name %>
+<% end %>
+
+<% f.field_container :first_name do %>
+  <%= f.label :first_name, t("first_name") %><br />
+  <%= f.text_field :first_name, :class => 'fullwidth title'  %>
+  <%= f.error_message_on :first_name %>
+<% end %>
+
+<% f.field_container :second_name do %>
+  <%= f.label :second_name, t("second_name") %><br />
+  <%= f.text_field :second_name, :class => 'fullwidth title'  %>
+  <%= f.error_message_on :second_name %>
+<% end %>
+
+<% f.field_container :website_url do %>
+  <%= f.label :website_url, t("activerecord.attributes.author.website_url") %><br />
+  <%= f.text_field :website_url, :class => 'fullwidth title'  %>
+  <%= f.error_message_on :website_url %>
+<% end %>
+
+<% f.field_container :permalink do %>
+  <%= f.label :permalink, t("permalink") %><br />
+  <%= f.text_field :permalink, :class => 'fullwidth title'  %>
+  <%= f.error_message_on :permalink %>
+<% end %>
+
+<% f.field_container :description do %>
+  <%= f.label :description, t("description")%><br />
+  <%= f.text_area :description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+  <%= f.error_message_on :description %>
+<% end %>
+<% f.field_container :meta_keywords do %>
+  <%= f.label :meta_keywords, t("meta_keywords")%><br />
+  <%= f.text_field :meta_keywords, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+  <%= f.error_message_on :meta_keywords %>
+<% end %>
+<% f.field_container :meta_description do %>
+  <%= f.label :meta_description, t("meta_description")%><br />
+  <%= f.text_field :meta_description, {:cols => 60, :rows => 4, :class => 'fullwidth'} %>
+  <%= f.error_message_on :meta_description %>
+<% end %>

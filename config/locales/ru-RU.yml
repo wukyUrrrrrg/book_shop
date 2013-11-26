@@ -1,0 +1,32 @@
+ru-RU:
+  authors: Авторы
+  new_author: Новый автор
+  presses: Издательства
+  new_press: Новое издательство
+  product_series_index: Серии товаров
+  new_product_series: Новая серия
+  new_book_binding: Новый переплёт
+  activerecord:
+    models:
+     author: 'Автор'
+     press: 'Издательство'
+     product_series: Серия
+     book_binding: "Переплёт"
+
+    attributes:
+      product_series:
+        description: О серии
+      press:
+        name: "Название"
+        description: "Об издательстве" 
+        website_url: "Сайт издательства" 
+      author:
+        last_name: "Фамилия"
+        first_name: "Имя"
+        second_name: "Отчество"
+        name_with_initials: ФИО автора
+        description: "Об авторе" 
+        website_url: "Сайт автора"
+      book_binding:
+        name: "Тип переплёта"
+        new: "Новый тип переплёта" 

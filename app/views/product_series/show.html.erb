@@ -1,0 +1,15 @@
+<h1><%=h @product_series.full_name %></h1>
+
+<p>
+  <%= @product_series.description.blank? ? content_tag('strong', t('activerecord.attributes.product_series.description')) + ':' + t('gui.no_info') : @product_series.description.html_safe %>
+</p>
+
+<%= link_to 'Назад', :back -%>
+<br />
+
+<p><strong>Вы можете скачать безплатно или купить следующие позиции из серии '<%= @product_series.full_name %>':</strong></p>
+<%= render :partial => "shared/products.html.erb", :locals => {:products => @product_series.products.active, :taxon => nil } %>
+
+<% content_for :sidebar do %>
+  <%= render "shared/taxonomies" %>
+<% end %>

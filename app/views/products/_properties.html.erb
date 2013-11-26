@@ -1,0 +1,39 @@
+<% if @product_properties.present? or @product.author or @product.press or @product.product_series or @product.book_binding %>
+  <dl id="product-properties" class="table-display">
+
+    <% if @product.author -%>
+      <dt>Автор</dt>
+      <dd><%= link_to @product.author.full_name, @product.author %></dd>
+    <% end -%>
+    <% if @product.press -%>
+      <dt>Издательство</dt>
+      <dd><%= link_to @product.press.full_name, @product.press %></dd>
+    <% end -%>
+    <% if @product.product_series -%>
+      <dt><%= t('activerecord.models.product_series') %></dt>
+      <dd><%= link_to @product.product_series.full_name, @product.product_series %></dd>
+    <% end -%>
+    <% if @product.book_binding -%>
+      <dt><%= t('activerecord.models.book_binding') %></dt>
+      <dd><%= @product.book_binding.full_name %></dd>
+    <% end -%>
+    
+    <% for product_property in @product_properties %>
+      <% unless product_property.value.blank? || product_property.property.name =~ /&/ -%>
+	<dt><%= product_property.property.presentation %></dt>
+	<dd><%= product_property.value.html_safe %></dd>
+      <% end %>
+    <% end %>
+
+    <% if @product.master.weight -%>
+      <dt><%= t(:weight_in_gramms) %></dt>
+      <dd><%= @product.master.weight.to_i %></dd>
+    <% end -%>
+
+    <% if @product.master.height and @product.master.width -%>
+      <dt><%= t(:size_in_cm) %></dt>
+      <dd><%= "#{@product.master.height.to_i.to_s}x#{@product.master.width.to_i}" %></dd>
+    <% end -%>
+
+  </dl>
+<% end %>
